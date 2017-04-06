@@ -10,9 +10,9 @@ from flask_restful_swagger_2 import Api, swagger
 from pkg_resources import resource_filename
 from qube.src.api import app  # pylint: disable=import-self
 from qube.src.api.flask_swagger_ui import get_swaggerui_blueprint
-from qube.src.api.hellocontroller import HelloController
-from qube.src.api.hellocontroller import HelloItemController
-from qube.src.api.versioncontroller import HelloItemVersionController
+from qube.src.api.friday_democontroller import friday_demoController
+from qube.src.api.friday_democontroller import friday_demoItemController
+from qube.src.api.versioncontroller import friday_demoItemVersionController
 from qube.src.commons.log import Log as LOG
 
 logging_config = resource_filename(
@@ -64,9 +64,9 @@ docs.append(api.get_swagger_doc())
 (docs, API_URL+'.json', title='Example', api_version='0.1'))
 """
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
-api.add_resource(HelloItemVersionController, '/v1/hello/version')
-api.add_resource(HelloController, '/v1/hello')
-api.add_resource(HelloItemController, '/v1/hello/<string:entity_id>')
+api.add_resource(friday_demoItemVersionController, '/v1/friday_demo/version')
+api.add_resource(friday_demoController, '/v1/friday_demo')
+api.add_resource(friday_demoItemController, '/v1/friday_demo/<string:entity_id>')
 
 
 def main():
